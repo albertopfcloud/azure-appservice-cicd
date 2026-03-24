@@ -80,4 +80,4 @@ The transition from a provisioned empty state to a fully functional API is handl
 The initial pipeline execution failed during the "Build and Push" stage with a "403 Forbidden" error. This occurred because, by default, the GitHub Actions token (GITHUB_TOKEN) is restricted to read-only access for security reasons. To resolve this, I explicitly configured the workflow permissions to include packages: write. This ensures the automated agent has the necessary rights to create and update container images within the GitHub Container Registry.
 
 ---
-*Created by Alberto Pérez - Aspiring Cloud Engineer*
+*Created by Alberto Pérez Florea - Aspiring Cloud Engineer*
