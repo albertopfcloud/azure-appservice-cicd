@@ -2,20 +2,24 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Endpoint principal
+// Main endpoint
 app.get('/', (req, res) => {
     res.json({
         status: "success",
-        message: "¡Hola desde Azure App Service! CI/CD funcionando perfectamente.",
+        message: "Hello from Azure App Service! CI/CD is working perfectly.",
         version: "1.0.0"
     });
 });
 
-// Endpoint de healthcheck
+// Healthcheck endpoint (standard DevOps practice for monitoring)
 app.get('/health', (req, res) => {
-    res.json({ status: "healthy", uptime: process.uptime() });
+    res.json({ 
+        status: "healthy", 
+        uptime: process.uptime() 
+    });
 });
 
+// Start the server
 app.listen(port, () => {
-    console.log(`API ejecutándose en el puerto ${port}`);
+    console.log(`API running on port ${port}`);
 });

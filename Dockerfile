@@ -1,21 +1,20 @@
-# 1. Imagen base: Usamos Node.js 20 en la versión Alpine Linux (ultraligera)
+# 1. Base image: Using Node.js 20 on Alpine Linux (ultralight version)
 FROM node:20-alpine
 
-# 2. Definimos el directorio de trabajo dentro del contenedor
+# 2. Define the working directory inside the container
 WORKDIR /app
 
-# 3. Copiamos los archivos primero
-# Esto nos ayuda a que el pipeline sea más rápido si no cambiamos dependencias
+# 3. Copy package files first to leverage Docker layer caching
 COPY package*.json ./
 
-# 4. Instalamos las dependencias
+# 4. Install production dependencies
 RUN npm install
 
-# 5. Copiamos el resto del código
+# 5. Copy the rest of the application source code
 COPY . .
 
-# 6. Exponemos el puerto 8080 (donde escucha nuestra API)
+# 6. Expose port 8080 (standard port for our API)
 EXPOSE 8080
 
-# 7. El comando para arrancar la aplicación
+# 7. Command to start the application
 CMD ["npm", "start"]
